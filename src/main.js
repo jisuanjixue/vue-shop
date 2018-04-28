@@ -3,21 +3,24 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import store from './store'
 import Vant from 'vant'
+import axios from 'axios'
+import VueAxios from 'vue-axios'
+import './common/style.css'
+import 'vant/lib/vant-css/index.css'
+Vue.prototype.$http = axios
 Vue.use(Vant)
-
+Vue.use(VueAxios, axios)
 Vue.config.productionTip = false
-//  得到手机屏幕的宽度
-let htmlWidth = document.documentElement.clientWidth || document.body.clientWidth
-// 得到html的Dom元素
-let htmlDom = document.getElementsByTagName('html')[0]
-// 设置根元素字体大小
-htmlDom.style.fontSize = htmlWidth / 20 + 'px'
-
-/* eslint-disable no-new */
-new Vue({
+// eslint-disable-line no-new
+let vm = new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
+})
+Vue.use({
+  vm
 })
