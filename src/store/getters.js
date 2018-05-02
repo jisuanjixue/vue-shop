@@ -6,5 +6,9 @@ export default {
   colors: state => {
     const colors = state.productList.map(item => item.color)
     return [...new Set(colors)]
+  },
+  images: state => {
+    const images = state.productList.map(item => item.image)
+    return [...new Set(images)]
   }
 }

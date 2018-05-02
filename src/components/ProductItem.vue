@@ -38,6 +38,11 @@ export default {
         '红色': '#f2352e'
       }
     }
+  },
+  methods: {
+    handleCart () {
+      this.$store.commit('addCart', this.info.id)
+    }
   }
 }
 </script>

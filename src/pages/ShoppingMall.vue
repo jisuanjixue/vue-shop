@@ -2,14 +2,19 @@
   <div>
     <div class="search-bar">
       <van-row>
-        <van-col span="3">
-          <img :src="locationIcon" width="35%" class="location-icon">
+        <van-col span="4">
+          <img :src="locationIcon" width="30%" class="location-icon">
         </van-col>
-        <van-col span="16">
+        <van-col span="10">
           <input type="text" class="search-input" />
         </van-col>
         <van-col span="5">
           <van-button size="mini">查找</van-button>
+        </van-col>
+        <van-col span="5">
+          <router-link to="/cart" class="header-menu-cart">
+            购物车<span v-if="cartList.length"> {{cartList.length}}</span>
+          </router-link>
         </van-col>
       </van-row>
     </div>
@@ -70,8 +75,8 @@
 <script>
 import Vue from 'vue'
 import productItem from '../components/ProductItem'
-import { Button, Row, Col, Swipe, SwipeItem, Lazyload } from 'vant'
-Vue.use(Button).use(Row).use(Col).use(Swipe).use(SwipeItem).use(Lazyload)
+import { Button, Row, Col, Swipe, SwipeItem, Lazyload, Tab, Tabs } from 'vant'
+Vue.use(Button).use(Row).use(Col).use(Swipe).use(SwipeItem).use(Lazyload).use(Tab).use(Tabs)
 export default {
   components: {productItem},
   data () {
@@ -85,7 +90,6 @@ export default {
       filterBrand: '',
       filterColor: '',
       order: ''
-      // productList: []
     }
   },
   created () {
@@ -121,6 +125,9 @@ export default {
         }
       }
       return list
+    },
+    cartList () {
+      return this.$store.state.cartList
     }
   },
   mounted () {
@@ -194,6 +201,7 @@ export default {
   }
   .list-control-filter{
       margin-bottom: 16px;
+      float: left;
   }
   .list-control-filter-item,
   .list-control-order-item {
@@ -213,5 +221,16 @@ export default {
   .product-not-found{
     text-align: center;
     padding: 32px;
+  }
+  .header-menu-cart span {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    text-align: center;
+    border-radius: 50%;
+    background: #ff5500;
+    color: #fff;
+    font-size: 12px;
   }
 </style>

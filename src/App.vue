@@ -5,6 +5,9 @@
 </template>
 
 <script>
+import Vue from 'vue'
+import { Dialog } from 'vant'
+Vue.use(Dialog)
 export default {
   name: 'App'
 }

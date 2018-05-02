@@ -10,7 +10,7 @@ export default {
     if (isAdded) {
       isAdded.count++
     } else {
-      state.cartList.fill({
+      state.cartList.push({
         id: id,
         count: 1
       })
@@ -23,7 +23,7 @@ export default {
   },
   // 删除商品
   deleteCart (state, id) {
-    const index = state.carList.findIndex(v => v.id === id)
+    const index = state.cartList.findIndex(v => v.id === id)
     state.cartList.splice(index, 1)
   },
   // 清空购物车
