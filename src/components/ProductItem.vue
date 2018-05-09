@@ -1,19 +1,6 @@
 <template>
   <div class="product">
     <router-link :to="'/product/' + info.id" class="product-main">
-      <!-- <van-row>
-        <van-col><img :src="info.image"></van-col>
-      </van-row>
-      <van-row>
-        <van-col><h4>{{info.name}}</h4></van-col>
-      </van-row>
-      <van-row>
-        <van-col><div class="product-color" :style="{background: colors[info.color]}"></div></van-col>
-      </van-row>
-      <van-row>
-        <van-col><div class="product-cost">¥ {{info.cost}}</div></van-col>
-      </van-row>
-      <div class="product-add-cart" @click.prevent="handleCart">加入购物车</div> -->
       <img :src="info.image">
       <h4>{{ info.name }}</h4>
       <div class="product-color" :style="{ background: colors[info.color]}"></div>
@@ -24,9 +11,6 @@
 </template>
 
 <script>
-// import Vue from 'vue'
-// import { Row, Col } from 'vant'
-// Vue.use(Row).use(Col)
 export default {
   props: ['info'],
   data () {

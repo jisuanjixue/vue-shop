@@ -13,7 +13,7 @@
         </van-col>
         <van-col span="5">
           <router-link to="/cart" class="header-menu-cart">
-            购物车<span v-if="cartList.length"> {{cartList.length}}</span>
+            <van-icon name="cart"/><span v-if="cartList.length"> {{cartList.length}}</span>
           </router-link>
         </van-col>
       </van-row>
@@ -75,8 +75,8 @@
 <script>
 import Vue from 'vue'
 import productItem from '../components/ProductItem'
-import { Button, Row, Col, Swipe, SwipeItem, Lazyload, Tab, Tabs } from 'vant'
-Vue.use(Button).use(Row).use(Col).use(Swipe).use(SwipeItem).use(Lazyload).use(Tab).use(Tabs)
+import { Button, Row, Col, Swipe, SwipeItem, Lazyload, Tab, Tabs, Icon } from 'vant'
+Vue.use(Button).use(Row).use(Col).use(Swipe).use(SwipeItem).use(Lazyload).use(Tab).use(Tabs).use(Icon)
 export default {
   components: {productItem},
   data () {

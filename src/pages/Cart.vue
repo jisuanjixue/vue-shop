@@ -10,29 +10,19 @@
         <van-col span="3">操作</van-col>
       </van-row>
     </div>
-    <div>
-      <van-row v-for="(item, index) in cartList" :key="item.id">
-        <van-col span="10">
-          <img :src="productDictList[item.id].image" width="20%">
-          <span class="info-name">{{ productDictList[item.id].name }}</span>
-        </van-col>
-        <van-col span="3">¥ {{ productDictList[item.id].cost }}</van-col>
-        <van-col span="5">
-          <van-stepper v-model="item.count" :min="1" :step="1" :default-value="1" @click="change(index)" />
-        </van-col>
-        <van-col span="3">¥ {{ productDictList[item.id].cost * item.count }}</van-col>
-        <van-button span="3" type="danger" size="mini" @click.native="handleDelete(index)">删除</van-button>
-      </van-row>
-    </div>
+    <cart-item :item="item" :productList="productList" v-for="(item, index) in cartList" :key="item.id" @changCount="change(index)" @handleClear="handleDelete(index)"></cart-item>
     <van-dialog v-model="show" showCancelButton />
+    <div class="cart-empty" v-if="!cartList.length">购物车为空</div>
   </div>
 </template>
 
 <script>
 import Vue from 'vue'
+import CartItem from '../components/CartItem.vue'
 import { Row, Col, Button, Stepper } from 'vant'
 Vue.use(Row).use(Col).use(Button).use(Stepper)
 export default {
+  components: { CartItem },
   data () {
     return {
       show: false,
@@ -45,13 +35,6 @@ export default {
   computed: {
     cartList () {
       return this.$store.state.cartList
-    },
-    productDictList () {
-      const dict = {}
-      this.productList.some(item => {
-        dict[item.id] = item
-      })
-      return dict
     }
   },
   methods: {

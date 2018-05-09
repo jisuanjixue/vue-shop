@@ -6,8 +6,8 @@
 
 <script>
 import Vue from 'vue'
-import { Dialog } from 'vant'
-Vue.use(Dialog)
+import { Dialog, Toast } from 'vant'
+Vue.use(Dialog).use(Toast)
 export default {
   name: 'App'
 }
